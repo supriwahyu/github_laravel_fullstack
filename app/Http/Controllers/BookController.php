@@ -7,6 +7,7 @@ use App\Models\Book;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
+use App\Models\Review;
 use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
@@ -14,7 +15,8 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-        return view('admin.book.index', compact('books'));
+        $reviews = Review::all();
+        return view('admin.book.index', compact('books', 'reviews'));
     }
     
     public function show($id)

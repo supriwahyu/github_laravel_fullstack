@@ -50,4 +50,7 @@ Route::group(['middleware' => 'auth:admin,user'], function() {
     Route::put('/book/update/{id}', [BookController::class, 'update'])->name('admin.book.update');
     Route::get('/book/show/{id}', [BookController::class, 'show'])->name('admin.book.show');
     Route::delete('/book/delete/{id}', [BookController::class, 'destroy'])->name('admin.book.delete');
+    //review route
+    Route::get('book/review/{id}', [ReviewController::class, 'index'])->name('review');
+    Route::post('/book/review', [ReviewController::class, 'store'])->name('admin.review.store');
 });

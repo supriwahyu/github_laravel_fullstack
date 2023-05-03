@@ -17,6 +17,7 @@ Dashboard
               <th scope="col">name</th>
               <th scope="col">detail</th>
               <th scope="col">price</th>
+              <th scope="col">review</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -30,9 +31,13 @@ Dashboard
               <td>{{ $book->name }}</td>
               <td>{{ $book->detail }}</td>
               <td>{{ $book->price }}</td>
+              @foreach ($reviews as $review)
+              <td>{{ $review->review }}</td>
+              @endforeach
               <td>
                 <a href="book/edit/{{$book->id}}" class="text-indigo-600 hover:text-indigo-900">edit</a>
                 <a href="book/show/{{$book->id}}" class="text-gray-600 hover:text-gray-900">show</a>
+                <a href="book/review/{{$book->id}}" class="text-gray-600 hover:text-gray-900">create review</a>
                 <form method="POST" action="{{ URL::to('book/delete/'.$book->id) }}">
                   @csrf
                   @method('DELETE')
