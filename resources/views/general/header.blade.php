@@ -20,7 +20,7 @@
                   @else
                 <a href="{{ route('signin') }}" class="btn btn-success" data-toggle="modal"><span>Login</span></a>
                 <div style="width: 10px;"></div>
-                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><span>Register</span></a>
+                <a href="{{ route('signup') }}"" class="btn btn-success" data-toggle="modal"><span>Register</span></a>
                 @endif
             </ul>
         </div>

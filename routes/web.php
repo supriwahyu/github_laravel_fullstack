@@ -22,8 +22,10 @@ use App\Http\Controllers\DashboardController;
 // });
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/signin', [HomeController::class, 'signin'])->name('signin');
+Route::get('/signup', [HomeController::class, 'signup'])->name('signup');
 
 Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::post('register', [AuthController::class, 'register'])->name('register');
 
 Route::group(['middleware' => 'auth:admin,user'], function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
