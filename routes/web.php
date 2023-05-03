@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,12 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/signin', [HomeController::class, 'signin'])->name('signin');
+
+Route::post('login', [AuthController::class, 'login'])->name('login');
+
+Route::group(['middleware' => 'auth:admin,user'], function() {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('logout2', [AuthController::class, 'logoutUser'])->name('logoutUser');
+});
