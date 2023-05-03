@@ -13,4 +13,10 @@ class Review extends Model
     public function products() {
         return $this->belongsTo(Book::class);
     }
+
+    protected $fillable = [
+        'customer',
+        'review',
+        'star',
+    ];
 }

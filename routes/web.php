@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +42,12 @@ Route::group(['middleware' => 'auth:admin,user'], function() {
     Route::put('/article/update/{id}', [ArticleController::class, 'update'])->name('admin.article.update');
     Route::get('/article/show/{id}', [ArticleController::class, 'show'])->name('admin.article.show');
     Route::delete('/article/delete/{id}', [ArticleController::class, 'destroy'])->name('admin.article.delete');
+    // book route
+    Route::get('book', [BookController::class, 'index'])->name('book');
+    Route::get('/book/create', [BookController::class, 'create'])->name('admin.book.create');
+    Route::post('/book/store', [BookController::class, 'store'])->name('admin.book.store');
+    Route::get('/book/edit/{id}', [BookController::class, 'edit'])->name('admin.book.edit');
+    Route::put('/book/update/{id}', [BookController::class, 'update'])->name('admin.book.update');
+    Route::get('/book/show/{id}', [BookController::class, 'show'])->name('admin.book.show');
+    Route::delete('/book/delete/{id}', [BookController::class, 'destroy'])->name('admin.book.delete');
 });
